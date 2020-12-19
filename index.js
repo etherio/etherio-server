@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
@@ -10,6 +11,7 @@ const middleware = require("./src/middleware");
 const router = require("./router");
 
 app.use(express.static(path.resolve("tmp")));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(middleware(__dirname));
