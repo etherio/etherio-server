@@ -70,4 +70,8 @@ app.get("/status", (req, res) => {
   });
 });
 
+app.get("/timestamp", (req, res) => {
+  res.json(JSON.stringify(Date.now()));
+});
+
 module.exports = app;
