@@ -1,0 +1,23 @@
+exports.handler = (request) => {
+  let statusCode = 200;
+  let headers = {
+    "content-type": "application/json;charset=UTF-8",
+    "access-control-allow-origin": "*",
+  };
+  let response = {};
+
+  try {
+    // your code here...
+  } catch(err) {
+    // handle your error
+    console.log(err);
+    statusCode = 500;
+    response.error = 'Unexpected Error';
+  }
+
+  return {
+    headers,
+    statusCode,
+    body: JSON.stringify(response),
+  };
+};
