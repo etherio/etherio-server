@@ -1,4 +1,4 @@
-const admin = require("./libs/admin");
+const admin = require("./admin");
 
 exports.handler = async (request) => {
   const { token, role } = request.queryStringParameters;

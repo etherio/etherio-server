@@ -2,7 +2,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "development": "env NODE_ENV development nodemon",
+    "development": "env NODE_ENV=development nodemon",
     "production": "env NODE_ENV=production npm run start"
   },
   "dependencies": {
