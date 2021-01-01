@@ -49,11 +49,11 @@ app.post("/image", upload.single("image"), async (req, res) => {
     }
     await image.quality(80);
     if (code) {
-      await image.print(black, 11, 19, `OMG#${code}`);
-      await image.print(black, 9, 21, `OMG#${code}`);
-      await image.print(black, 11, 21, `OMG#${code}`);
-      await image.print(black, 9, 19, `OMG#${code}`);
-      await image.print(white, 10, 20, `OMG#${code}`);
+      await image.print(black, 11, 19, `#${code}`);
+      await image.print(black, 9, 21, `#${code}`);
+      await image.print(black, 11, 21, `#${code}`);
+      await image.print(black, 9, 19, `#${code}`);
+      await image.print(white, 10, 20, `#${code}`);
     }
     await image.write(output);
     res.json({

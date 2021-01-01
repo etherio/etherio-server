@@ -20,19 +20,24 @@ app.use(cookieParser());
 app.use(middleware(tempDir));
 
 // registering the routes
-app.use("/", router);
+app.use(router);
 
 /**
  * Fallback on request route does not exist
  */
-app.use((req, res) => {
-  const file = path.join(tempDir, req.path);
+app.all("/:path", (req, res) => {
+  const pathName = req.params.path;
+  const download = Boolean(req.query.download);
+  const file = path.join(tempDir, pathName);
   // check does file exists
-  if (!fs.existsSync(file)) {
+  if ([".", "_"].includes(pathName.substr(0, 1)) || !fs.existsSync(file)) {
     res.status(100);
     return res.end();
   }
   // send file data file exists
+  if (download) {
+    res.setHeader("Content-Type", "application/image");
+  }
   res.sendFile(file);
 });
 

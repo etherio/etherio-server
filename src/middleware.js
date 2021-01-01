@@ -15,7 +15,7 @@ module.exports = (dirname) => {
   return (req, res, next) => {
     res.setHeader("X-Expired-Time", new Date(expired).toUTCString());
     res.startTime = req.startTime = startTime;
-    res.expiredOn = req.expiredOn = expired;
+    res.expiredOn = req.expiredOn = Date.now() + maxAge;
     return next();
   };
 };
