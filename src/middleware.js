@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const maxAge = /* min */ 30 * /* sec */ 60 * /* ms */ 1000;
+/* 30 minutes */
+const maxAge = 30 * 60 * 1000;
 
 module.exports = (dirname) => {
   const cachedFile = path.resolve(dirname, ".timestamp");

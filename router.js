@@ -13,13 +13,13 @@ const MIME_TYPE_EXTENSION = {
   "image/svg": "svg",
 };
 
-const app = Router();
+const router = Router();
 
 const upload = multer({
   dest: path.resolve(__dirname, "tmp"),
 });
 
-app.post("/image", upload.single("image"), async (req, res) => {
+router.post("/image", upload.single("image"), async (req, res) => {
   let ext =
     req.file && req.file.mimetype && MIME_TYPE_EXTENSION[req.file.mimetype];
   let code = req.body.code;
@@ -36,7 +36,7 @@ app.post("/image", upload.single("image"), async (req, res) => {
     let { filename, path, destination } = req.file;
     let fileName = `${Date.now()}-${filename}.${ext}`;
     let output = `${destination}/${fileName}`;
-    let protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+    // let protocol = process.env.NODE_ENV === "production" ? "https" : "http";
     let image = await jimp.read(path);
     let { height, width } = image.bitmap;
     let white = await jimp.loadFont(jimp.FONT_SANS_16_WHITE);
@@ -55,9 +55,12 @@ app.post("/image", upload.single("image"), async (req, res) => {
       await image.print(black, 9, 19, `#${code}`);
       await image.print(white, 10, 20, `#${code}`);
     }
-    await image.write(output);
-    res.json({
-      path: `${protocol}://${req.headers.host}/${fileName}`,
+    image.write(output, () => {
+      res.status(301);
+      res.setHeader("Content-Type", req.file.mimetype);
+      res.setHeader("Location", fileName);
+      res.setHeader("Refresh", `0;url=${fileName}`);
+      res.end();
     });
   } catch (e) {
     res.status(500);
@@ -65,19 +68,17 @@ app.post("/image", upload.single("image"), async (req, res) => {
       error: "Failed to optimize image",
     });
     console.error(e);
+    res.end();
   }
-  res.end();
+  // res.end();
 });
 
-app.get("/status", (req, res) => {
+router.get("/status", (req, res) => {
   res.json({
     startTime: req.startTime,
     expiredOn: req.expiredOn,
+    timestamp: Date.now(),
   });
 });
 
-app.get("/timestamp", (req, res) => {
-  res.json(JSON.stringify(Date.now()));
-});
-
-module.exports = app;
+module.exports = router;
