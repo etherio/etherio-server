@@ -1,1 +1,1 @@
-web: nuxt start
+web: node credential.js && nuxt start
