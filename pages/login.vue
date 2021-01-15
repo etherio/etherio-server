@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import firebase from "~/plugins/firebase.client";
+import firebase from "~/plugins/firebase";
 
 const auth = firebase().auth();
 
