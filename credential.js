@@ -13,4 +13,7 @@ if (!fs.existsSync(credentialPath)) {
   axios(url).then(({ data }) =>
     fs.writeFileSync(credentialPath, JSON.stringify(data, null, 2), 'utf-8')
   );
+  console.log(`downloaded ${GOOGLE_APPLICATION_CREDENTIALS}`);
+} else {
+  console.log(`already existed ${GOOGLE_APPLICATION_CREDENTIALS}`);
 }
