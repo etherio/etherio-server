@@ -2,11 +2,17 @@
   "name": "etherio-x",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "15.3.x",
+    "yarn": "1.22.x"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "npm run credential && nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "credential": "node credential.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
