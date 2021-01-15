@@ -11,13 +11,30 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@plugins/admin.server'],
+  plugins: [
+    {
+      src: '@plugins/admin',
+      mode: 'server',
+    },
+    {
+      src: '@plugins/firebase',
+      mode: 'client',
+    },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -58,4 +75,12 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // server middleware
+  serverMiddleware: [
+    {
+      path: '/api',
+      handler: '~/src/server.js',
+    },
+  ],
 };

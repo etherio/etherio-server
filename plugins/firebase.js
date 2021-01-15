@@ -1,7 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyBiSkxX_gfnqyhPath2vFwn2gjLclrFCtI',
   appId: '1:966040745442:web:2a83c08213721cdaacb5bb',
   authDomain: 'etherio-vue.firebaseapp.com',

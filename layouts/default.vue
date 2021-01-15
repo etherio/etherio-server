@@ -46,6 +46,11 @@ export default {
           title: "Login",
           to: "/login",
         },
+        {
+          icon: "mdi-post-outline",
+          title: "Blog",
+          to: "/blog",
+        },
       ],
       drawer: false,
       title: "Vuetify.js",

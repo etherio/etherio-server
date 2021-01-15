@@ -12,13 +12,15 @@
     "build": "npm run credential && nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "credential": "node credential.js"
+    "credential": "node src/credential.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/vuetify": "^1.11.2",
+    "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "firebase": "^8.2.2",
     "firebase-admin": "^9.4.2",
     "firebase-tools": "^9.2.0",

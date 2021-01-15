@@ -74,6 +74,9 @@ import firebase from "~/plugins/firebase";
 const auth = firebase().auth();
 
 export default {
+  head: {
+    title: "Log In",
+  },
   data: () => ({
     credential: {
       email: null,
