@@ -16,15 +16,15 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
-    "@nuxtjs/vuetify": "^1.11.2",
+    "@nuxtjs/vuetify": "^1.11.3",
     "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^8.2.2",
-    "firebase-admin": "^9.4.2",
-    "firebase-tools": "^9.2.0",
-    "nuxt": "^2.14.6"
+    "firebase-admin": "^11.4.1",
+    "firebase-tools": "^11.21.0",
+    "nuxt": "^2.15.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.12.0",
